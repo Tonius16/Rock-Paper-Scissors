@@ -16,27 +16,86 @@ const choices = ["Rock", "Paper", "Scissors"];
     return cpuChoice;
 }
 
-
-const playerSelection = "Scissors"
-const cpuSelection = getComputerChoice()
-
-
 function playRound(playerSelection, cpuSelection) {
     if (playerSelection === "Scissors" && cpuSelection === "Rock" ) {
-        return "you loose"
+        return "you loose";
      }
      else if (playerSelection === "Scissors" && cpuSelection === "Paper" ) {
-         return "you win"
+         return "you win";
       }
       else if (playerSelection === "Scissors" && cpuSelection === "Scissors" ) {
-         return "draw"
+         return "draw";
+      }
+      else if (playerSelection === "Rock" && cpuSelection === "Paper" ) {
+        return "you loose";
+      }
+      else if (playerSelection === "Rock" && cpuSelection === "Scissors" ) {
+        return "you win";
+      }
+      else if (playerSelection === "Rock" && cpuSelection === "Rock" ) {
+        return "draw";
+      }
+      else if (playerSelection === "Paper" && cpuSelection === "Scissors" ) {
+        return "you loose";
+      }
+      else if (playerSelection === "Paper" && cpuSelection === "Rock" ) {
+        return "you win";
+      }
+      else if (playerSelection === "Paper" && cpuSelection === "Paper" ) {
+        return "draw";
+      }
+      else if (playerSelection === "Paper" && cpuSelection === "Paper" ) {
+        return "draw";
+      }
+      else if (playerSelection != "") {
+        return "wrong value"
       }
     }
     
 function game() {
+
+    let playerScore = 0;
+    let cpuScore = 0;
+
     for (let i = 0; i < 5; i++) {
-        playRound(playerSelection, cpuSelection)
-    }   
+        let playerSelection = prompt("Rock Paper Scissors go")
+        let cpuSelection = getComputerChoice();
+        let result = playRound(playerSelection, cpuSelection);
+        
+        if (result === "you loose") {
+           cpuScore += 1;
+           console.log(playerScore, cpuScore)
+        }  
+         else if (result === "you win") {
+           playerScore += 1;
+           console.log(playerScore, cpuScore)
+        }
+         else if (result === "draw") {
+           i -= 1;
+           console.log("draw", playerScore, cpuScore)
+        }
+        else if (result === "wrong value") {
+           i -= 1
+           console.log("wrong value")
+        }
+
+    }
+    let winner;
+    if (playerScore < cpuScore) {
+      winner = "cpu";
+    }
+     else if (playerScore > cpuScore) {
+      winner = "player";
+     }
+     return winner;
     }
 
-let playerScore =     
+  console.log(game())
+
+    
+
+
+
+ 
+
+
