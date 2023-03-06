@@ -9,7 +9,7 @@
   First to 3 points wins game ends 
   offer replay?*/
 
-const choices = ["Rock", "Paper", "Scissors"];
+const choices = ["rock", "paper", "scissors"];
 
   function getComputerChoice() {
     let cpuChoice = choices [Math.floor(Math.random() * choices.length)];
@@ -17,34 +17,31 @@ const choices = ["Rock", "Paper", "Scissors"];
 }
 
 function playRound(playerSelection, cpuSelection) {
-    if (playerSelection === "Scissors" && cpuSelection === "Rock" ) {
+    if (playerSelection === "scissors" && cpuSelection === "rock" ) {
         return "you loose";
      }
-     else if (playerSelection === "Scissors" && cpuSelection === "Paper" ) {
+     else if (playerSelection === "scissors" && cpuSelection === "paper" ) {
          return "you win";
       }
-      else if (playerSelection === "Scissors" && cpuSelection === "Scissors" ) {
+      else if (playerSelection === "scissors" && cpuSelection === "scissors" ) {
          return "draw";
       }
-      else if (playerSelection === "Rock" && cpuSelection === "Paper" ) {
+      else if (playerSelection === "rock" && cpuSelection === "paper" ) {
         return "you loose";
       }
-      else if (playerSelection === "Rock" && cpuSelection === "Scissors" ) {
+      else if (playerSelection === "rock" && cpuSelection === "scissors" ) {
         return "you win";
       }
-      else if (playerSelection === "Rock" && cpuSelection === "Rock" ) {
+      else if (playerSelection === "rock" && cpuSelection === "rock" ) {
         return "draw";
       }
-      else if (playerSelection === "Paper" && cpuSelection === "Scissors" ) {
+      else if (playerSelection === "paper" && cpuSelection === "scissors" ) {
         return "you loose";
       }
-      else if (playerSelection === "Paper" && cpuSelection === "Rock" ) {
+      else if (playerSelection === "paper" && cpuSelection === "rock" ) {
         return "you win";
       }
-      else if (playerSelection === "Paper" && cpuSelection === "Paper" ) {
-        return "draw";
-      }
-      else if (playerSelection === "Paper" && cpuSelection === "Paper" ) {
+      else if (playerSelection === "paper" && cpuSelection === "paper" ) {
         return "draw";
       }
       else if (playerSelection != "") {
@@ -58,7 +55,7 @@ function game() {
     let cpuScore = 0;
 
     for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Rock Paper Scissors go")
+        let playerSelection = prompt("rock paper scissors go").toLowerCase()
         let cpuSelection = getComputerChoice();
         let result = playRound(playerSelection, cpuSelection);
         
@@ -90,7 +87,7 @@ function game() {
      return winner;
     }
 
-  console.log(game())
+  
 
     
 
