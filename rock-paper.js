@@ -9,6 +9,9 @@
   First to 3 points wins game ends 
   offer replay?*/
 
+const rockBtn = document.getElementById("btnRock");
+const paperBtn = document.getElementById("btnPaper");
+const scissBtn = document.getElementById("btnScissors");
 const choices = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
@@ -16,8 +19,17 @@ function getComputerChoice() {
   return cpuChoice;
 }
 
+let cpuSelection = getComputerChoice();
+
+rockBtn.addEventListener("click", playRound);
+rockBtn.addEventListener("click", () => {
+  playerSelection = "rock";
+});
+paperBtn.addEventListener("click", playRound);
+scissBtn.addEventListener("click", playRound);
+
 function playRound(playerSelection, cpuSelection) {
-  if (playerSelection === "scissors" && cpuSelection === "rock") {
+  if (playerSelection === "rock" && cpuSelection === "rock") {
     return "you lose";
   } else if (playerSelection === "scissors" && cpuSelection === "paper") {
     return "you win";
@@ -39,8 +51,9 @@ function playRound(playerSelection, cpuSelection) {
     return "wrong value";
   }
 }
+console.log(playerSelection);
 
-function game() {
+/*function game() {
   let playerScore = 0;
   let cpuScore = 0;
 
@@ -70,6 +83,4 @@ function game() {
     winner = "player";
   }
   return winner;
-}
-
-console.log(game());
+}*/

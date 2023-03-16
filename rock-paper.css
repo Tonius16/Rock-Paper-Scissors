@@ -1,0 +1,40 @@
+body {
+}
+
+.bodyContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  margin: 60px;
+  margin-left: 130px;
+  margin-right: 130px;
+}
+
+.header {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: black solid;
+}
+
+img {
+  width: 200px;
+  height: 193px;
+}
+
+.resultDiv {
+  width: 800px;
+  height: 600px;
+  border: black solid;
+}
+
+.scoreDiv {
+  width: 200px;
+  height: 600px;
+  border: black solid;
+}

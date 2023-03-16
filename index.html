@@ -4,25 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="rock-paper.css" />
+    <script src="rock-paper.js" defer></script>
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <header>
-      <div class="header" id="header">
-        Rock Paper Scissors <br />
-        A timeless classic
+    <div class="bodyContent">
+      <header>
+        <div class="header" id="header">
+          <div>
+            Rock Paper Scissors <br />
+            A timeless classic
+          </div>
+        </div>
+      </header>
+      <div class="content">
+        <div class="btnDiv" id="btnDiv">
+          <div class="btn">
+            <button id="btnRock"><img src="/imgs/Rock.jpg" /></button>
+          </div>
+          <div class="btn">
+            <button id="btnPaper"><img src="/imgs/paper.jpg" /></button>
+          </div>
+          <div class="btn">
+            <button id="btnScissors"><img src="/imgs/scissors.jpg" /></button>
+          </div>
+        </div>
+        <div class="resultDiv" id="resultDiv"></div>
+        <div class="scoreDiv" id="cpuDiv">
+          <div class="cpuDiv" id="cpuDiv"></div>
+          <div class="playerDiv" id="playerDiv"></div>
+        </div>
       </div>
-    </header>
-    <div class="picsDiv" id="picsDiv">
-      <div class="pic" id="picRock"><img src="/imgs/Rock.jpg" /></div>
-      <div class="pic" id="picPaper"><img src="/imgs/paper.jpg" /></div>
-      <div class="pic" id="picScissors"><img src="/imgs/scissors.jpg" /></div>
     </div>
-    <div class="resultDiv" id="resultDiv"></div>
-    <div class="scoreDiv" id="cpuDiv">
-      <div class="cpuDiv" id="cpuDiv"></div>
-      <div class="playerDiv" id="playerDiv"></div>
-    </div>
-    <footer>Rock Paer Scissors trademark</footer>
   </body>
 </html>
