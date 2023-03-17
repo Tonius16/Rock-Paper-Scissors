@@ -22,19 +22,70 @@ body {
   border-bottom: black solid;
 }
 
-img {
+.rockPic,
+.paperPic,
+.scissorsPic {
   width: 200px;
   height: 193px;
 }
 
 .resultDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 800px;
   height: 600px;
   border: black solid;
 }
 
+.picContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 200px;
+}
+
+.previewPicDiv {
+  border: black solid;
+  width: 100px;
+  height: 100px;
+}
+
+.previewPic {
+  width: 100px;
+  height: 100px;
+}
+
+.resultInfoContainer {
+}
+
+.resultInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: solid black;
+  width: 800px;
+  height: 100px;
+}
+
 .scoreDiv {
-  width: 200px;
+  width: 250px;
   height: 600px;
+  border: black solid;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cpuDiv,
+.playerDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
   border: black solid;
 }

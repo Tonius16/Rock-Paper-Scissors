@@ -12,6 +12,11 @@
 const rockBtn = document.getElementById("btnRock");
 const paperBtn = document.getElementById("btnPaper");
 const scissBtn = document.getElementById("btnScissors");
+const resultDiv = document.getElementById("resultDiv");
+const scoreDiv = document.getElementById("scoreDiv");
+const cpuScoreDefaultText = document.getElementById("cpuScore");
+const playerScoreDefaultText = document.getElementById("playerScore");
+
 const choices = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
@@ -21,15 +26,23 @@ function getComputerChoice() {
 
 let cpuSelection = getComputerChoice();
 
-rockBtn.addEventListener("click", playRound);
 rockBtn.addEventListener("click", () => {
   playerSelection = "rock";
+  playRound(playerSelection, getComputerChoice());
 });
-paperBtn.addEventListener("click", playRound);
-scissBtn.addEventListener("click", playRound);
+
+paperBtn.addEventListener("click", () => {
+  playerSelection = "paper";
+  playRound(playerSelection, getComputerChoice());
+});
+
+scissBtn.addEventListener("click", () => {
+  playerSelection = "scissors";
+  playRound(playerSelection, getComputerChoice());
+});
 
 function playRound(playerSelection, cpuSelection) {
-  if (playerSelection === "rock" && cpuSelection === "rock") {
+  if (playerSelection === "scissors" && cpuSelection === "rock") {
     return "you lose";
   } else if (playerSelection === "scissors" && cpuSelection === "paper") {
     return "you win";
@@ -51,7 +64,6 @@ function playRound(playerSelection, cpuSelection) {
     return "wrong value";
   }
 }
-console.log(playerSelection);
 
 /*function game() {
   let playerScore = 0;
