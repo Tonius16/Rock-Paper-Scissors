@@ -29,6 +29,10 @@ body {
   height: 193px;
 }
 
+.disableClick {
+  pointer-events: none;
+}
+
 .resultDiv {
   display: flex;
   flex-direction: column;
@@ -47,18 +51,22 @@ body {
   margin-top: 200px;
 }
 
-.previewPicDiv {
+.previewPicDivLeft,
+.previewPicDivRight {
   border: black solid;
   width: 100px;
   height: 100px;
 }
 
-.previewPic {
+.previewPicLeft,
+.previewPicRight {
   width: 100px;
   height: 100px;
 }
-
 .resultInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .resultInfo {
@@ -88,4 +96,10 @@ body {
   width: 200px;
   height: 200px;
   border: black solid;
+}
+
+.clearButton {
+  margin-bottom: 40px;
+  width: 100px;
+  height: 100px;
 }
