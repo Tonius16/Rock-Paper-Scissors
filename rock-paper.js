@@ -28,200 +28,38 @@ function getComputerChoice() {
   return cpuChoice;
 }
 
-rockBtn.addEventListener("click", () => {
-  playerSelection = "rock";
-  game(playerSelection, getComputerChoice());
+function resultWindow(imgLeftsrc, imgRightsrc, resultInfoTextContent) {
+  imgLeft = document.createElement("img");
+  imgLeft.src = imgLeftsrc;
+  imgLeft.classList.add("previewPicLeft");
+  previewPicDivLeft.appendChild(imgLeft);
+  imgRight = document.createElement("img");
+  imgRight.src = imgRightsrc;
+  imgRight.classList.add("previewPicRight");
+  previewPicDivRight.appendChild(imgRight);
+  resultInfoText = document.createElement("a");
+  resultInfoText.textContent = resultInfoTextContent;
+  resultInfo.appendChild(resultInfoText);
+}
+
+function disableBtnClick() {
   rockBtn.classList.add("disableClick");
   paperBtn.classList.add("disableClick");
   scissBtn.classList.add("disableClick");
-});
+  document.querySelector(".clearButton").focus();
+}
 
-paperBtn.addEventListener("click", () => {
-  playerSelection = "paper";
-  game(playerSelection, getComputerChoice());
-  paperBtn.classList.add("disableClick");
-  rockBtn.classList.add("disableClick");
-  scissBtn.classList.add("disableClick");
-});
+function createClearButton() {
+  clearButton = document.createElement("button");
+  clearButton.classList.add("clearButton");
+  resultInfoContainer.insertBefore(clearButton, resultInfoContainer.firstChild);
+}
 
-scissBtn.addEventListener("click", () => {
-  playerSelection = "scissors";
-  game(playerSelection, getComputerChoice());
-  scissBtn.classList.add("disableClick");
-  paperBtn.classList.add("disableClick");
-  rockBtn.classList.add("disableClick");
-});
-
-let playerScoreNum = 0;
-let cpuScoreNum = 0;
-
-function game(playerSelection, cpuSelection) {
-  result = "";
-
-  if (playerSelection === "scissors" && cpuSelection === "rock") {
-    imgLeft = document.createElement("img");
-    imgLeft.src = "/imgs/scissors.jpg";
-    imgLeft.classList.add("previewPicLeft");
-    previewPicDivLeft.appendChild(imgLeft);
-    imgRight = document.createElement("img");
-    imgRight.src = "/imgs/Rock.jpg";
-    imgRight.classList.add("previewPicRight");
-    previewPicDivRight.appendChild(imgRight);
-    resultInfoText = document.createElement("a");
-    resultInfoText.textContent = "Rock Beats Scissors, Sorry!";
-    resultInfo.appendChild(resultInfoText);
-    result = "you lose";
-  } else if (playerSelection === "scissors" && cpuSelection === "paper") {
-    imgLeft = document.createElement("img");
-    imgLeft.src = "/imgs/scissors.jpg";
-    imgLeft.classList.add("previewPicLeft");
-    previewPicDivLeft.appendChild(imgLeft);
-    imgRight = document.createElement("img");
-    imgRight.src = "/imgs/paper.jpg";
-    imgRight.classList.add("previewPicRight");
-    previewPicDivRight.appendChild(imgRight);
-    resultInfoText = document.createElement("a");
-    resultInfoText.textContent = "Scissors Beats Paper, Nice!";
-    resultInfo.appendChild(resultInfoText);
-    result = "you win";
-  } else if (playerSelection === "scissors" && cpuSelection === "scissors") {
-    imgLeft = document.createElement("img");
-    imgLeft.src = "/imgs/scissors.jpg";
-    imgLeft.classList.add("previewPicLeft");
-    previewPicDivLeft.appendChild(imgLeft);
-    imgRight = document.createElement("img");
-    imgRight.src = "/imgs/scissors.jpg";
-    imgRight.classList.add("previewPicRight");
-    previewPicDivRight.appendChild(imgRight);
-    resultInfoText = document.createElement("a");
-    resultInfoText.textContent = "Draw!";
-    resultInfo.appendChild(resultInfoText);
-    result = "draw";
-  } else if (playerSelection === "rock" && cpuSelection === "paper") {
-    imgLeft = document.createElement("img");
-    imgLeft.src = "/imgs/Rock.jpg";
-    imgLeft.classList.add("previewPicLeft");
-    previewPicDivLeft.appendChild(imgLeft);
-    imgRight = document.createElement("img");
-    imgRight.src = "/imgs/paper.jpg";
-    imgRight.classList.add("previewPicRight");
-    previewPicDivRight.appendChild(imgRight);
-    resultInfoText = document.createElement("a");
-    resultInfoText.textContent = "Paper Beats Rock, Sorry!";
-    resultInfo.appendChild(resultInfoText);
-    result = "you lose";
-  } else if (playerSelection === "rock" && cpuSelection === "scissors") {
-    imgLeft = document.createElement("img");
-    imgLeft.src = "/imgs/Rock.jpg";
-    imgLeft.classList.add("previewPicLeft");
-    previewPicDivLeft.appendChild(imgLeft);
-    imgRight = document.createElement("img");
-    imgRight.src = "/imgs/scissors.jpg";
-    imgRight.classList.add("previewPicRight");
-    previewPicDivRight.appendChild(imgRight);
-    resultInfoText = document.createElement("a");
-    resultInfoText.textContent = "Rock Beats Scissors, Nice!";
-    resultInfo.appendChild(resultInfoText);
-    result = "you win";
-  } else if (playerSelection === "rock" && cpuSelection === "rock") {
-    imgLeft = document.createElement("img");
-    imgLeft.src = "/imgs/Rock.jpg";
-    imgLeft.classList.add("previewPicLeft");
-    previewPicDivLeft.appendChild(imgLeft);
-    imgRight = document.createElement("img");
-    imgRight.src = "/imgs/Rock.jpg";
-    imgRight.classList.add("previewPicRight");
-    previewPicDivRight.appendChild(imgRight);
-    resultInfoText = document.createElement("a");
-    resultInfoText.textContent = "Draw!";
-    resultInfo.appendChild(resultInfoText);
-    result = "draw";
-  } else if (playerSelection === "paper" && cpuSelection === "scissors") {
-    imgLeft = document.createElement("img");
-    imgLeft.src = "/imgs/paper.jpg";
-    imgLeft.classList.add("previewPicLeft");
-    previewPicDivLeft.appendChild(imgLeft);
-    imgRight = document.createElement("img");
-    imgRight.src = "/imgs/scissors.jpg";
-    imgRight.classList.add("previewPicRight");
-    previewPicDivRight.appendChild(imgRight);
-    resultInfoText = document.createElement("a");
-    resultInfoText.textContent = "Scissors Beats Paper, Sorry!";
-    resultInfo.appendChild(resultInfoText);
-    result = "you lose";
-  } else if (playerSelection === "paper" && cpuSelection === "rock") {
-    imgLeft = document.createElement("img");
-    imgLeft.src = "/imgs/paper.jpg";
-    imgLeft.classList.add("previewPicLeft");
-    previewPicDivLeft.appendChild(imgLeft);
-    imgRight = document.createElement("img");
-    imgRight.src = "/imgs/Rock.jpg";
-    imgRight.classList.add("previewPicRight");
-    previewPicDivRight.appendChild(imgRight);
-    resultInfoText = document.createElement("a");
-    resultInfoText.textContent = "Paper Beats Rock, Nice!";
-    resultInfo.appendChild(resultInfoText);
-    result = "you win";
-  } else if (playerSelection === "paper" && cpuSelection === "paper") {
-    imgLeft = document.createElement("img");
-    imgLeft.src = "/imgs/paper.jpg";
-    imgLeft.classList.add("previewPicLeft");
-    previewPicDivLeft.appendChild(imgLeft);
-    imgRight = document.createElement("img");
-    imgRight.src = "/imgs/paper.jpg";
-    imgRight.classList.add("previewPicRight");
-    previewPicDivRight.appendChild(imgRight);
-    resultInfoText = document.createElement("a");
-    resultInfoText.textContent = "Draw!";
-    resultInfo.appendChild(resultInfoText);
-    result = "draw";
-  } else {
-    return "wrong value";
-  }
-
-  if (result === "you win") {
-    playerScoreNum += 1;
-    clearButton = document.createElement("button");
-    clearButton.classList.add("clearButton");
-    resultInfoContainer.insertBefore(
-      clearButton,
-      resultInfoContainer.firstChild
-    );
-    console.log(playerScoreNum, cpuScoreNum);
-  } else if (result === "you lose") {
-    cpuScoreNum += 1;
-    clearButton = document.createElement("button");
-    clearButton.classList.add("clearButton");
-    resultInfoContainer.insertBefore(
-      clearButton,
-      resultInfoContainer.firstChild
-    );
-    console.log(playerScoreNum, cpuScoreNum);
-  } else if (result === "draw") {
-    clearButton = document.createElement("button");
-    clearButton.classList.add("clearButton");
-    resultInfoContainer.insertBefore(
-      clearButton,
-      resultInfoContainer.firstChild
-    );
-    console.log("draw", playerScoreNum, cpuScoreNum);
-  }
-
-  let winner = "";
-  if (playerScoreNum > cpuScoreNum && playerScoreNum === 3) {
-    winner = "You Win";
-    console.log(winner);
-  } else if (cpuScoreNum > playerScoreNum && cpuScoreNum === 3) {
-    winner = "You lose";
-    console.log(winner);
-  }
-
-  if (clearButton) {
-    clearButton = document.querySelector(".clearButton");
-    clearButton.addEventListener("click", () => {
-      nextRound();
-    });
-  }
+function createRefreshButton() {
+  clearButton = document.querySelector(".clearButton");
+  clearButton.addEventListener("click", () => {
+    refreshPage();
+  });
 }
 
 function nextRound() {
@@ -232,4 +70,119 @@ function nextRound() {
   paperBtn.classList.remove("disableClick");
   scissBtn.classList.remove("disableClick");
   clearButton.remove();
+}
+
+function refreshPage() {
+  window.location.reload();
+}
+
+rockBtn.addEventListener("click", () => {
+  playerSelection = "rock";
+  game(playerSelection, getComputerChoice());
+  disableBtnClick();
+});
+
+paperBtn.addEventListener("click", () => {
+  playerSelection = "paper";
+  game(playerSelection, getComputerChoice());
+  disableBtnClick();
+});
+
+scissBtn.addEventListener("click", () => {
+  playerSelection = "scissors";
+  game(playerSelection, getComputerChoice());
+  disableBtnClick();
+});
+
+let playerScoreNum = 0;
+let cpuScoreNum = 0;
+
+function game(playerSelection, cpuSelection) {
+  result = "";
+
+  if (playerSelection === "scissors" && cpuSelection === "rock") {
+    resultWindow(
+      "/imgs/scissors.jpg",
+      "/imgs/Rock.jpg",
+      "Rock Beats Scissors, Sorry!"
+    );
+    result = "you lose";
+  } else if (playerSelection === "scissors" && cpuSelection === "paper") {
+    resultWindow(
+      "/imgs/scissors.jpg",
+      "/imgs/paper.jpg",
+      "Scissors Beats Paper, Nice!"
+    );
+    result = "you win";
+  } else if (playerSelection === "scissors" && cpuSelection === "scissors") {
+    resultWindow("/imgs/scissors.jpg", "/imgs/scissors.jpg", "Draw!");
+    result = "draw";
+  } else if (playerSelection === "rock" && cpuSelection === "paper") {
+    resultWindow(
+      "/imgs/Rock.jpg",
+      "/imgs/paper.jpg",
+      "Paper Beats Rock, Sorry!"
+    );
+    result = "you lose";
+  } else if (playerSelection === "rock" && cpuSelection === "scissors") {
+    resultWindow(
+      "/imgs/Rock.jpg",
+      "/imgs/scissors.jpg",
+      "Rock Beats Scissors, Nice!"
+    );
+    result = "you win";
+  } else if (playerSelection === "rock" && cpuSelection === "rock") {
+    resultWindow("/imgs/Rock.jpg", "/imgs/Rock.jpg", "Draw!");
+    result = "draw";
+  } else if (playerSelection === "paper" && cpuSelection === "scissors") {
+    resultWindow(
+      "/imgs/paper.jpg",
+      "/imgs/scissors.jpg",
+      "Scissors Beats Paper, Sorry!"
+    );
+    result = "you lose";
+  } else if (playerSelection === "paper" && cpuSelection === "rock") {
+    resultWindow(
+      "/imgs/paper.jpg",
+      "/imgs/Rock.jpg",
+      "Paper Beats Rock, Nice!"
+    );
+    result = "you win";
+  } else if (playerSelection === "paper" && cpuSelection === "paper") {
+    resultWindow("/imgs/paper.jpg", "/imgs/paper.jpg", "Draw!");
+    result = "draw";
+  } else {
+    return "wrong value";
+  }
+
+  if (result === "you win") {
+    playerScoreNum += 1;
+    createClearButton();
+    console.log(playerScoreNum, cpuScoreNum);
+  } else if (result === "you lose") {
+    cpuScoreNum += 1;
+    createClearButton();
+    console.log(playerScoreNum, cpuScoreNum);
+  } else if (result === "draw") {
+    createClearButton();
+    console.log("draw", playerScoreNum, cpuScoreNum);
+  }
+
+  let winner = "";
+  if (playerScoreNum > cpuScoreNum && playerScoreNum === 3) {
+    createRefreshButton();
+    winner = "You Win";
+    console.log(winner);
+  } else if (cpuScoreNum > playerScoreNum && cpuScoreNum === 3) {
+    createRefreshButton();
+    winner = "You lose";
+    console.log(winner);
+  }
+
+  if (clearButton) {
+    clearButton = document.querySelector(".clearButton");
+    clearButton.addEventListener("click", () => {
+      nextRound();
+    });
+  }
 }

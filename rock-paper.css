@@ -33,6 +33,22 @@ body {
   pointer-events: none;
 }
 
+.clearButtonDisplay {
+  display: none;
+}
+
+.clearButton {
+  margin-bottom: 40px;
+  width: 100px;
+  height: 100px;
+}
+
+.refreshButton {
+  margin-bottom: 40px;
+  width: 100px;
+  height: 100px;
+}
+
 .resultDiv {
   display: flex;
   flex-direction: column;
@@ -96,10 +112,4 @@ body {
   width: 200px;
   height: 200px;
   border: black solid;
-}
-
-.clearButton {
-  margin-bottom: 40px;
-  width: 100px;
-  height: 100px;
 }
