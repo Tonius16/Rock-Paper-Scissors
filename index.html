@@ -12,26 +12,25 @@
     <div class="bodyContent">
       <header>
         <div class="header" id="header">
-          <div>
-            Rock Paper Scissors <br />
-            A timeless classic
+          <div class="rpsTitle">
+            <a>Rock Paper Scissors</a>
           </div>
         </div>
       </header>
       <div class="content">
         <div class="btnDiv" id="btnDiv">
           <div class="btn">
-            <button id="btnRock" tabindex="-1">
+            <button id="btnRock" class="btnRock" tabindex="-1">
               <img class="rockPic" src="/imgs/Rock.jpg" />
             </button>
           </div>
           <div class="btn">
-            <button id="btnPaper" tabindex="-1">
+            <button id="btnPaper" class="btnPaper" tabindex="-1">
               <img class="paperPic" src="/imgs/paper.jpg" />
             </button>
           </div>
           <div class="btn">
-            <button id="btnScissors" tabindex="-1">
+            <button id="btnScissors" class="btnScissors" tabindex="-1">
               <img class="scissorsPic" src="/imgs/scissors.jpg" />
             </button>
           </div>
@@ -47,11 +46,11 @@
           </div>
         </div>
         <div class="scoreDiv" id="ScoreDiv">
-          <div class="cpuDiv">
-            <h3 id="cpuScore">CPU Score : 0</h3>
+          <div class="cpuDiv" id="cpuDiv">
+            <h3 id="cpuScore" class="cpuScore">CPU Score : 0</h3>
           </div>
-          <div class="playerDiv">
-            <h3 id="playerScore">Player Score : 0</h3>
+          <div class="playerDiv" id="playerDiv">
+            <h3 id="playerScore" class="playerScore">Player Score : 0</h3>
           </div>
         </div>
       </div>

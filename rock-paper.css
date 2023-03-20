@@ -9,9 +9,8 @@ body {
 .content {
   display: flex;
   justify-content: space-between;
-  margin: 60px;
-  margin-left: 130px;
-  margin-right: 130px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .header {
@@ -19,14 +18,33 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: black solid;
+  border-image-slice: 29% 5% 33% 2%;
+  border-image-width: 1.5em 1.5em 1.5em 1.5em;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: round round;
+  border-style: solid;
+  border-image-source: url("/imgs/grass.jpg");
+}
+
+.rpsTitle {
+  font-size: 50px;
+  font-weight: bolder;
+  font-style: oblique;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  margin-right: 10px;
 }
 
 .rockPic,
 .paperPic,
 .scissorsPic {
-  width: 200px;
-  height: 193px;
+  width: 150px;
+  height: 150px;
+}
+
+.btnPaper {
+  margin-top: 65px;
+  margin-bottom: 65px;
 }
 
 .disableClick {
@@ -39,6 +57,7 @@ body {
 
 .clearButton {
   margin-bottom: 40px;
+  margin-top: -140px;
   width: 100px;
   height: 100px;
 }
@@ -92,6 +111,13 @@ body {
   border-top: solid black;
   width: 800px;
   height: 100px;
+}
+
+.winnerText {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: -270px;
 }
 
 .scoreDiv {

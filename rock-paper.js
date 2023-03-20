@@ -18,8 +18,13 @@ const previewPicDivRight = document.getElementById("previewPicDivRight");
 const resultInfoContainer = document.getElementById("resultInfoContainer");
 const resultInfo = document.getElementById("resultInfo");
 const scoreDiv = document.getElementById("scoreDiv");
+const playerDiv = document.getElementById("playerDiv");
+const cpuDiv = document.getElementById("cpuDiv");
 const cpuScoreDefaultText = document.getElementById("cpuScore");
 const playerScoreDefaultText = document.getElementById("playerScore");
+
+let playerScoreNum = 0;
+let cpuScoreNum = 0;
 
 const choices = ["rock", "paper", "scissors"];
 
@@ -52,14 +57,8 @@ function disableBtnClick() {
 function createClearButton() {
   clearButton = document.createElement("button");
   clearButton.classList.add("clearButton");
+  clearButton.textContent = "Next Round";
   resultInfoContainer.insertBefore(clearButton, resultInfoContainer.firstChild);
-}
-
-function createRefreshButton() {
-  clearButton = document.querySelector(".clearButton");
-  clearButton.addEventListener("click", () => {
-    refreshPage();
-  });
 }
 
 function nextRound() {
@@ -70,6 +69,29 @@ function nextRound() {
   paperBtn.classList.remove("disableClick");
   scissBtn.classList.remove("disableClick");
   clearButton.remove();
+}
+
+function updatePlayerScore(playerScoreNum) {
+  playerScoreDefaultText.innerText = `Player Score: ${playerScoreNum}`;
+}
+
+function updateCpuScore() {
+  cpuScoreDefaultText.innerText = `CPU Score: ${cpuScoreNum}`;
+}
+
+function createRefreshButton() {
+  clearButton = document.querySelector(".clearButton");
+  clearButton.textContent = "Retry?";
+  clearButton.addEventListener("click", () => {
+    refreshPage();
+  });
+}
+
+function displayWinner(text) {
+  winnerText = document.createElement("a");
+  winnerText.classList.add("winnerText");
+  resultDiv.insertBefore(winnerText, resultDiv.firstChild);
+  winnerText.textContent = text;
 }
 
 function refreshPage() {
@@ -94,11 +116,8 @@ scissBtn.addEventListener("click", () => {
   disableBtnClick();
 });
 
-let playerScoreNum = 0;
-let cpuScoreNum = 0;
-
 function game(playerSelection, cpuSelection) {
-  result = "";
+  let result = "";
 
   if (playerSelection === "scissors" && cpuSelection === "rock") {
     resultWindow(
@@ -158,22 +177,26 @@ function game(playerSelection, cpuSelection) {
   if (result === "you win") {
     playerScoreNum += 1;
     createClearButton();
+    updatePlayerScore(playerScoreNum);
     console.log(playerScoreNum, cpuScoreNum);
   } else if (result === "you lose") {
     cpuScoreNum += 1;
     createClearButton();
+    updateCpuScore();
     console.log(playerScoreNum, cpuScoreNum);
-  } else if (result === "draw") {
+  } else {
     createClearButton();
     console.log("draw", playerScoreNum, cpuScoreNum);
   }
 
   let winner = "";
   if (playerScoreNum > cpuScoreNum && playerScoreNum === 3) {
+    displayWinner("You Won, Congradulations!!");
     createRefreshButton();
     winner = "You Win";
     console.log(winner);
   } else if (cpuScoreNum > playerScoreNum && cpuScoreNum === 3) {
+    displayWinner("Sorry, You Lost!!");
     createRefreshButton();
     winner = "You lose";
     console.log(winner);
