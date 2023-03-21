@@ -134,7 +134,7 @@ function game(playerSelection, cpuSelection) {
     );
     result = "you win";
   } else if (playerSelection === "scissors" && cpuSelection === "scissors") {
-    resultWindow("/imgs/scissors.jpg", "/imgs/scissors.jpg", "Draw!");
+    resultWindow("./imgs/scissors.jpg", "./imgs/scissors.jpg", "Draw!");
     result = "draw";
   } else if (playerSelection === "rock" && cpuSelection === "paper") {
     resultWindow(
