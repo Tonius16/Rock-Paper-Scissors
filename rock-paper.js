@@ -2,12 +2,15 @@
   Get input prom player
   Evaluate the two selections
   if paper is true and scissors is true, scissors win
-   else if paper is true and rock is true, peper wins
-    else if paper is true and paper is true, replay both choice functions
+  else if paper is true and rock is true, peper wins
+  else if paper is true and paper is true, replay both choice functions
   (repeat for rock and scissors)
-  Points function gives one point to winner
-  First to 3 points wins game ends 
-  offer replay?*/
+  Points function gives one point to winner,
+  initiate next round
+  First to 5 points wins game ends 
+  Offer replay*/
+
+// fetch all needed elements from html
 
 const rockBtn = document.getElementById("btnRock");
 const paperBtn = document.getElementById("btnPaper");
@@ -23,15 +26,25 @@ const cpuDiv = document.getElementById("cpuDiv");
 const cpuScoreDefaultText = document.getElementById("cpuScore");
 const playerScoreDefaultText = document.getElementById("playerScore");
 
+// variables keeping track of scores
+
 let playerScoreNum = 0;
 let cpuScoreNum = 0;
 
+// array of choices for the cpu to run through
+
 const choices = ["rock", "paper", "scissors"];
+
+// function that returns a random string from the choices array
 
 function getComputerChoice() {
   let cpuChoice = choices[Math.floor(Math.random() * choices.length)];
   return cpuChoice;
 }
+
+/* function that takes a few parameters, 
+   generates images and displays the result of the round
+   based on the current combination */
 
 function resultWindow(imgLeftsrc, imgRightsrc, resultInfoTextContent) {
   imgLeft = document.createElement("img");
@@ -47,6 +60,10 @@ function resultWindow(imgLeftsrc, imgRightsrc, resultInfoTextContent) {
   resultInfo.appendChild(resultInfoText);
 }
 
+/* here we disable interactions with the 3 buttons by giving them,
+  a class that sets pointer events to none and we focus on the,
+  next round button */
+
 function disableBtnClick() {
   rockBtn.classList.add("disableClick");
   paperBtn.classList.add("disableClick");
@@ -54,12 +71,17 @@ function disableBtnClick() {
   document.querySelector(".clearButton").focus();
 }
 
+// generates a next round button element
+
 function createClearButton() {
   clearButton = document.createElement("button");
   clearButton.classList.add("clearButton");
   clearButton.textContent = "Next Round";
   resultInfoContainer.insertBefore(clearButton, resultInfoContainer.firstChild);
 }
+
+/* function that removes all elements from the previous round,
+   and removes the disable click class */
 
 function nextRound() {
   imgLeft.remove();
@@ -71,6 +93,8 @@ function nextRound() {
   clearButton.remove();
 }
 
+// these two functions update the text of the score tracker
+
 function updatePlayerScore(playerScoreNum) {
   playerScoreDefaultText.innerText = `Player Score: ${playerScoreNum}`;
 }
@@ -78,6 +102,8 @@ function updatePlayerScore(playerScoreNum) {
 function updateCpuScore() {
   cpuScoreDefaultText.innerText = `CPU Score: ${cpuScoreNum}`;
 }
+
+// generating a retry button that triggers the refresh page function on click
 
 function createRefreshButton() {
   clearButton = document.querySelector(".clearButton");
@@ -87,6 +113,12 @@ function createRefreshButton() {
   });
 }
 
+function refreshPage() {
+  window.location.reload();
+}
+
+// here we generate a text element that displays if the player lost or won
+
 function displayWinner(text) {
   winnerText = document.createElement("a");
   winnerText.classList.add("winnerText");
@@ -94,9 +126,10 @@ function displayWinner(text) {
   winnerText.textContent = text;
 }
 
-function refreshPage() {
-  window.location.reload();
-}
+/* here we are adding event listeners to each of the 3 buttons,
+  that on click return a string with the players choice,
+  calls the game function (plays a round) and calls the function that
+  disables clicking on the buttons after the first time */
 
 rockBtn.addEventListener("click", () => {
   playerSelection = "rock";
@@ -115,6 +148,10 @@ scissBtn.addEventListener("click", () => {
   game(playerSelection, getComputerChoice());
   disableBtnClick();
 });
+
+/* main game function that takes 2 parameters and depending on the selections
+  sends the appropriate image and text to the result window function as its 
+  parameters also stores a string in the result variable */
 
 function game(playerSelection, cpuSelection) {
   let result = "";
@@ -174,33 +211,37 @@ function game(playerSelection, cpuSelection) {
     return "wrong value";
   }
 
+  /* here we are incrementing the score based on the result variable and 
+    calling 2 functions one with a parameter */
+
   if (result === "you win") {
     playerScoreNum += 1;
     createClearButton();
     updatePlayerScore(playerScoreNum);
-    console.log(playerScoreNum, cpuScoreNum);
   } else if (result === "you lose") {
     cpuScoreNum += 1;
     createClearButton();
     updateCpuScore();
-    console.log(playerScoreNum, cpuScoreNum);
   } else {
     createClearButton();
-    console.log("draw", playerScoreNum, cpuScoreNum);
   }
 
+  /* here we are checking for the winner based on the scores
+     also calling 2 functions */
+
   let winner = "";
-  if (playerScoreNum > cpuScoreNum && playerScoreNum === 3) {
+
+  if (playerScoreNum > cpuScoreNum && playerScoreNum === 5) {
     displayWinner("You Won, Congratulations!!");
     createRefreshButton();
     winner = "You Win";
-    console.log(winner);
-  } else if (cpuScoreNum > playerScoreNum && cpuScoreNum === 3) {
+  } else if (cpuScoreNum > playerScoreNum && cpuScoreNum === 5) {
     displayWinner("Sorry, You Lost!!");
     createRefreshButton();
     winner = "You lose";
-    console.log(winner);
   }
+
+  // selecting the next round button element and on click calling the next round function
 
   if (clearButton) {
     clearButton = document.querySelector(".clearButton");
