@@ -121,15 +121,15 @@ function game(playerSelection, cpuSelection) {
 
   if (playerSelection === "scissors" && cpuSelection === "rock") {
     resultWindow(
-      "/imgs/scissors.jpg",
-      "/imgs/Rock.jpg",
+      "./imgs/scissors.jpg",
+      "./imgs/Rock.jpg",
       "Rock Beats Scissors, Sorry!"
     );
     result = "you lose";
   } else if (playerSelection === "scissors" && cpuSelection === "paper") {
     resultWindow(
-      "/imgs/scissors.jpg",
-      "/imgs/paper.jpg",
+      "./imgs/scissors.jpg",
+      "./imgs/paper.jpg",
       "Scissors Beats Paper, Nice!"
     );
     result = "you win";
@@ -138,37 +138,37 @@ function game(playerSelection, cpuSelection) {
     result = "draw";
   } else if (playerSelection === "rock" && cpuSelection === "paper") {
     resultWindow(
-      "/imgs/Rock.jpg",
-      "/imgs/paper.jpg",
+      "./imgs/Rock.jpg",
+      "./imgs/paper.jpg",
       "Paper Beats Rock, Sorry!"
     );
     result = "you lose";
   } else if (playerSelection === "rock" && cpuSelection === "scissors") {
     resultWindow(
-      "/imgs/Rock.jpg",
-      "/imgs/scissors.jpg",
+      "./imgs/Rock.jpg",
+      "./imgs/scissors.jpg",
       "Rock Beats Scissors, Nice!"
     );
     result = "you win";
   } else if (playerSelection === "rock" && cpuSelection === "rock") {
-    resultWindow("/imgs/Rock.jpg", "/imgs/Rock.jpg", "Draw!");
+    resultWindow("./imgs/Rock.jpg", "./imgs/Rock.jpg", "Draw!");
     result = "draw";
   } else if (playerSelection === "paper" && cpuSelection === "scissors") {
     resultWindow(
-      "/imgs/paper.jpg",
-      "/imgs/scissors.jpg",
+      "./imgs/paper.jpg",
+      "./imgs/scissors.jpg",
       "Scissors Beats Paper, Sorry!"
     );
     result = "you lose";
   } else if (playerSelection === "paper" && cpuSelection === "rock") {
     resultWindow(
-      "/imgs/paper.jpg",
-      "/imgs/Rock.jpg",
+      "./imgs/paper.jpg",
+      "./imgs/Rock.jpg",
       "Paper Beats Rock, Nice!"
     );
     result = "you win";
   } else if (playerSelection === "paper" && cpuSelection === "paper") {
-    resultWindow("/imgs/paper.jpg", "/imgs/paper.jpg", "Draw!");
+    resultWindow("./imgs/paper.jpg", "./imgs/paper.jpg", "Draw!");
     result = "draw";
   } else {
     return "wrong value";
