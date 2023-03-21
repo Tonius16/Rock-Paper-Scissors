@@ -23,7 +23,7 @@ body {
   border-image-outset: 0px 0px 0px 0px;
   border-image-repeat: round round;
   border-style: solid;
-  border-image-source: url("/imgs/grass.jpg");
+  border-image-source: url("./imgs/grass.jpg");
 }
 
 .rpsTitle {
