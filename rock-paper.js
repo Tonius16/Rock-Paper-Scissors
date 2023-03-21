@@ -191,7 +191,7 @@ function game(playerSelection, cpuSelection) {
 
   let winner = "";
   if (playerScoreNum > cpuScoreNum && playerScoreNum === 3) {
-    displayWinner("You Won, Congradulations!!");
+    displayWinner("You Won, Congratulations!!");
     createRefreshButton();
     winner = "You Win";
     console.log(winner);
